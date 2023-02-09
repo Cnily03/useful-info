@@ -4,10 +4,15 @@
     // const $ = document.querySelector
     const $ = t => document.querySelector(t)
     const setCSSVariable = (key, value) => document.querySelector(":root").style.setProperty(key, value)
-    const formatId = id => "s_" + id.replace(/[# \/\\]/g, "").replace(/[\.\[\]\?]/g, "_")
+    const formatId = id => id.replace(/[# \/\\]/g, "").replace(/[\.\[\]\?]/g, "_")
+    const openTarget = target => {
+        var ea = document.createElement("a")
+        ea.href = "#" + target
+        ea.click()
+    }
     const openURL = url => {
         var ea = document.createElement("a")
-        ea.href = "#" + url
+        ea.href = url
         ea.click()
     }
     const setClipBoard = (text) => {
@@ -39,7 +44,7 @@
     var CUSTOM_CSS = []
 
     function renderContent(id = URI_ID[0]) {
-        id = id || $(".nav-container").firstChild.id
+        id = id || $(".nav-container").firstChild.id.slice(2)
         const eContent = $(".content")
         // clear current status
         eContent.innerHTML = ""
@@ -71,12 +76,12 @@
             if (o.title) {
                 var ePTitle = document.createElement("div")
                 ePTitle.classList.add("p-title")
-                ePTitle.id = formatId(o.title)
+                ePTitle.id = "s_" + formatId(o.title)
                 ePTitle.innerHTML = o.title
                 ePiece.appendChild(ePTitle)
                 // title click event
                 ePTitle.addEventListener("click", e => {
-                    openURL(document.querySelector(".nav-container .nav.active").id.slice(2) + "/" + e.target.id.slice(2))
+                    openTarget(document.querySelector(".nav-container .nav.active").id.slice(2) + "/" + e.target.id.slice(2))
                     window.scrollTo({
                         behavior: "smooth",
                         top: e.target.offsetTop
@@ -150,6 +155,7 @@
     document.addEventListener("DOMContentLoaded", e => {
         // set title
         $(".title").innerHTML = TITLE
+        $(".title").addEventListener("click", e => openURL(window.location.origin + window.location.pathname))
 
         const eNavContainer = $(".nav-container")
         let maxNavWidth = 0
@@ -157,7 +163,8 @@
             // render nav
             var navNode = document.createElement("div")
             navNode.classList.add("nav")
-            navNode.id = func["navid"] = formatId(func.nav)
+            navNode.id = "s_" + formatId(func.nav)
+            func["navid"] = formatId(func.nav)
             navNode.innerHTML = func.nav
             eNavContainer.appendChild(navNode)
 
@@ -169,8 +176,8 @@
             navNode.addEventListener("click", e => {
                 document.querySelectorAll(".nav-container .nav").forEach(e => e.classList.remove("active"))
                 e.target.classList.add("active")
-                if (!urlTargetedVisit) openURL(e.target.id.slice(2))
-                renderContent(e.target.id)
+                if (!urlTargetedVisit) openTarget(e.target.id.slice(2))
+                renderContent(e.target.id.slice(2))
                 // copy click
                 document.querySelectorAll(".content .piece .p-detail > div:not(.detail-header)").forEach(s => {
                     let canCopy = true
@@ -193,7 +200,6 @@
 
                 // URL Target Visit
                 setTimeout(() => {
-                    console.log($("#s_" + URI_ID[1]))
                     if (urlTargetedVisit && $("#s_" + URI_ID[1])) $("#s_" + URI_ID[1]).click()
                     if (urlTargetedVisit) urlTargetedVisit = false
                 }, 250)
@@ -214,7 +220,7 @@
             urlTargetedVisit = true
             $("#s_" + URI_ID[0]).click()
         } catch (e) {
-            console.error(e)
+            renderContent()
         }
     })
 }()
