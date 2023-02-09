@@ -1,0 +1,209 @@
+:root {
+    --nav-columns: 1;
+}
+
+body {
+    background-color: #2f3542;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+.title {
+    display: block;
+    margin: 0 auto;
+    padding: 1.6rem 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 2rem;
+    text-align: center;
+    background-color: #2a2f39;
+}
+
+.nav-container {
+    display: grid;
+    grid-template-columns: repeat(var(--nav-columns), 1fr);
+    margin-bottom: 2rem;
+}
+
+.nav-container .nav {
+    white-space: nowrap;
+    width: 100%;
+    min-width: max-content;
+    box-sizing: border-box;
+    overflow: hidden;
+    background-image: linear-gradient(#ffa502, #ffa502), linear-gradient(transparent, transparent);
+    background-color: #ff4757;
+    background-size: 100% 0, 100% 100%;
+    background-position: 0 100%, 0 0;
+    background-repeat: no-repeat;
+    padding: 0.5rem 1rem;
+    font-size: 1.1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color linear 0.2s, background-size linear 0.2s;
+}
+
+.nav-container .nav:hover {
+    background-color: #ff6b81;
+}
+
+.nav-container .nav:active,
+.nav-container .nav.active {
+    background-size: 100% 10%, 100% 100%;
+}
+
+.content {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    margin-top: 1.5rem;
+}
+
+.content .piece {
+    width: 98%;
+    max-width: 98%;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+}
+
+.content .piece .p-title {
+    width: max-content;
+    text-align: center;
+    font-size: 1.3rem;
+    margin: 0.5rem auto;
+    padding: 0.6rem 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.content .piece .p-detail {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    display: grid;
+    justify-content: center;
+    grid-auto-flow: row dense;
+    grid-template-columns: 1fr;
+    border-top: #747d8c 1px solid;
+    border-left: #747d8c 1px solid;
+}
+
+@media screen and (max-width: 425px) {
+    .content .piece .p-detail:has(.detail-title) {
+        grid-template-columns: 1fr !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+}
+
+.content .piece .p-detail > div {
+    position: relative;
+    font-size: 1rem;
+    padding: 0.6rem 0.8rem;
+    border: #747d8c 1px solid;
+    border-top: none;
+    border-left: none;
+    pointer-events: fill;
+}
+
+.content .piece .p-detail > div.detail-title:not(.detail-header) {
+    background-image: linear-gradient(#1e90ff, #1e90ff), linear-gradient(#1685f3, #1685f3);
+    background-size: 0% 100%, 100% 100%;
+    background-position: 0 0, 0 0;
+    background-repeat: no-repeat;
+    transition: background-size ease-in-out 0.2s;
+}
+
+.content .piece .p-detail > div.detail-title:not(.detail-header):hover {
+    background-size: 100% 100%, 100% 100%;
+}
+
+.content .piece .p-detail > div.detail-content:not(.detail-header) {
+    background-color: #484f5c;
+    transition: background-color linear 0.2s;
+}
+
+.content .piece .p-detail > div.detail-content:not(.detail-header):hover {
+    background-color: #57606f;
+}
+
+.content .piece .p-detail > div:not(.detail-header)::before {
+    content: "复制成功";
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-user-select: none;
+    user-select: none;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity ease-in-out 0.2s;
+}
+
+.content .piece .p-detail > div:not(.detail-header).copied::before {
+    opacity: 1;
+}
+
+.content .piece .p-detail > div:not(.detail-header)::after {
+    content: "";
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB0PSIxNjc1OTI5Mjg0NDE5IiBjbGFzcz0iaWNvbiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjI3NDUiIGRhdGEtZGFya3JlYWRlci1pbmxpbmUtZmlsbD0iIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCI+PHBhdGggZD0iTTM5NC42NjY2NjcgMTA2LjY2NjY2N2g0NDhhNzQuNjY2NjY3IDc0LjY2NjY2NyAwIDAgMSA3NC42NjY2NjYgNzQuNjY2NjY2djQ0OGE3NC42NjY2NjcgNzQuNjY2NjY3IDAgMCAxLTc0LjY2NjY2NiA3NC42NjY2NjdIMzk0LjY2NjY2N2E3NC42NjY2NjcgNzQuNjY2NjY3IDAgMCAxLTc0LjY2NjY2Ny03NC42NjY2NjdWMTgxLjMzMzMzM2E3NC42NjY2NjcgNzQuNjY2NjY3IDAgMCAxIDc0LjY2NjY2Ny03NC42NjY2NjZ6IG0wIDY0YTEwLjY2NjY2NyAxMC42NjY2NjcgMCAwIDAtMTAuNjY2NjY3IDEwLjY2NjY2NnY0NDhhMTAuNjY2NjY3IDEwLjY2NjY2NyAwIDAgMCAxMC42NjY2NjcgMTAuNjY2NjY3aDQ0OGExMC42NjY2NjcgMTAuNjY2NjY3IDAgMCAwIDEwLjY2NjY2Ni0xMC42NjY2NjdWMTgxLjMzMzMzM2ExMC42NjY2NjcgMTAuNjY2NjY3IDAgMCAwLTEwLjY2NjY2Ni0xMC42NjY2NjZIMzk0LjY2NjY2N3ogbTI0NS4zMzMzMzMgNTk3LjMzMzMzM2EzMiAzMiAwIDAgMSA2NCAwdjc0LjY2NjY2N2E3NC42NjY2NjcgNzQuNjY2NjY3IDAgMCAxLTc0LjY2NjY2NyA3NC42NjY2NjZIMTgxLjMzMzMzM2E3NC42NjY2NjcgNzQuNjY2NjY3IDAgMCAxLTc0LjY2NjY2Ni03NC42NjY2NjZWMzk0LjY2NjY2N2E3NC42NjY2NjcgNzQuNjY2NjY3IDAgMCAxIDc0LjY2NjY2Ni03NC42NjY2NjdoNzQuNjY2NjY3YTMyIDMyIDAgMCAxIDAgNjRoLTc0LjY2NjY2N2ExMC42NjY2NjcgMTAuNjY2NjY3IDAgMCAwLTEwLjY2NjY2NiAxMC42NjY2Njd2NDQ4YTEwLjY2NjY2NyAxMC42NjY2NjcgMCAwIDAgMTAuNjY2NjY2IDEwLjY2NjY2Nmg0NDhhMTAuNjY2NjY3IDEwLjY2NjY2NyAwIDAgMCAxMC42NjY2NjctMTAuNjY2NjY2di03NC42NjY2Njd6IiBmaWxsPSIjZmZmZmZmIiBwLWlkPSIyNzQ2IiBkYXRhLWRhcmtyZWFkZXItaW5saW5lLWZpbGw9IiIgc3R5bGU9Ii0tZGFya3JlYWRlci1pbmxpbmUtZmlsbDojMTgxYTFiOyI+PC9wYXRoPjwvc3ZnPg==");
+    background-size: 80%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 1.7rem;
+    height: 100%;
+    display: block;
+    position: absolute;
+    z-index: 4;
+    top: 0;
+    right: 0;
+    border-radius: 0.2rem 0 0 0.2rem;
+    cursor: pointer;
+    transition: all linear 0.2s;
+    opacity: 0;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.content .piece .p-detail > div.detail-content:not(.detail-header)::after {
+    background-color: #484f5c;
+    box-shadow: -0.5rem 0 0.4rem #484f5c;
+}
+
+.content .piece .p-detail > div.detail-content:not(.detail-header):hover::after {
+    background-color: #57606f;
+    box-shadow: -0.5rem 0 0.4rem #57606f;
+    opacity: 1;
+}
+
+.content .piece .p-detail > div.detail-title:not(.detail-header)::after {
+    background-color: #1685f3;
+    box-shadow: -0.5rem 0 0.4rem #1685f3;
+}
+
+.content .piece .p-detail > div.detail-title:not(.detail-header):hover::after {
+    background-color: #1e90ff;
+    box-shadow: -0.5rem 0 0.4rem #1e90ff;
+    opacity: 1;
+}
+
+.content .piece .p-detail > div.detail-title.detail-header {
+    text-align: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), linear-gradient(#1e90ff, #1e90ff);
+    background-repeat: no-repeat;
+}
+
+.content .piece .p-detail > div.detail-content.detail-header {
+    text-align: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), linear-gradient(#57606f, #57606f);
+    background-repeat: no-repeat;
+}
