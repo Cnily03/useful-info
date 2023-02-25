@@ -6,6 +6,7 @@ const STORAGE = {
                     title: "Windows 10",
                     header: ["操作系统", "GVLK密钥"],
                     // headerLayout: "1 1", // header 布局（合并单元格）
+                    lineWrap: false, // 单行是否换行
                     detail: [
                         ["Windows 10 Professional", "W269N-WFGWX-YVC9B-4J6C9-T83GX"],
                         ["Windows 10 Professional N", "MH37W-N47XK-V7XM9-C7227-GCQG9"],
@@ -20,6 +21,7 @@ const STORAGE = {
                 {
                     title: "Windows Server 2012 R2 and Windows 8.1",
                     header: ["操作系统", "GVLK密钥"],
+                    lineWrap: false,
                     detail: [
                         ["Windows 8.1 Professional", "GCRJD-8NW9H-F2CDX-CCM8D-9D6T9"],
                         ["Windows 8.1 Professional N", "HMCNV-VVBFX-7HMBH-CTY9B-B4FXY"],
@@ -33,6 +35,7 @@ const STORAGE = {
                 {
                     title: "Windows Server 2012 and Windows 8",
                     header: ["操作系统", "GVLK密钥"],
+                    lineWrap: false,
                     detail: [
                         ["Windows 8 Professional", "NG4HW-VH26C-733KW-K6F98-J8CK4"],
                         ["Windows 8 Professional N", "XCVCF-2NXM9-723PB-MHCB7-2RYQQ"],
@@ -51,6 +54,7 @@ const STORAGE = {
                 {
                     title: "Windows 7 and Windows Server 2008 R2",
                     header: ["操作系统", "GVLK密钥"],
+                    lineWrap: false,
                     detail: [
                         ["Windows 7 Professional", "FJ82H-XT6CR-J8D7P-XQJJ2-GPDD4"],
                         ["Windows 7 Professional N", "MRPKT-YTG23-K7D7T-X2JMM-QY7MG"],
@@ -69,6 +73,7 @@ const STORAGE = {
                 {
                     title: "Windows Vista and Windows Server 2008",
                     header: ["操作系统", "GVLK密钥"],
+                    lineWrap: false,
                     detail: [
                         ["Windows Vista Business", "YFKBB-PQJJV-G996G-VWGXY-2V3X8"],
                         ["Windows Vista Business N", "HMBQG-8H2RH-C77VX-27R82-VMQBT"],
@@ -92,6 +97,7 @@ const STORAGE = {
             content: [{
                     title: "Office 2019",
                     header: ["产品", "GVLK密钥"],
+                    lineWrap: false,
                     detail: [
                         ["Office Pro Plus 2019", "NMMKJ-6RK4F-KMJVX-8D9MJ-6MWKP"],
                         ["Office Standard 2019", "6NWWJ-YQWMR-QKGCB-6TMB3-9D9HK"],
@@ -112,6 +118,7 @@ const STORAGE = {
                 {
                     title: "Office 2016",
                     header: ["产品", "GVLK密钥"],
+                    lineWrap: false,
                     detail: [
                         ["Office Professional Plus 2016", "XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99"],
                         ["Office Standard 2016", "JNRGM-WHDWX-FJJG3-K47QV-DRTFM"],
@@ -133,6 +140,7 @@ const STORAGE = {
                 {
                     title: "Office 365",
                     header: ["产品", "GVLK密钥"],
+                    lineWrap: false,
                     detail: [
                         ["Office365ProPlus Retail", "DRNV7-VGMM2-B3G9T-4BF84-VMFTK"]
                     ]
@@ -140,6 +148,7 @@ const STORAGE = {
                 {
                     title: "Office 2013",
                     header: ["产品", "GVLK密钥"],
+                    lineWrap: false,
                     detail: [
                         ["Office 2013 Professional Plus", "YC7DK-G2NP3-2QQC3-J6H88-GVGXT"],
                         ["Office 2013 Standard", "KBKQT-2NMXY-JJWGP-M62JB-92CD4"],
@@ -161,6 +170,7 @@ const STORAGE = {
                 {
                     title: "Office 2010",
                     header: ["产品", "GVLK密钥"],
+                    lineWrap: false,
                     detail: [
                         ["Office Professional Plus 2010", "VYBBJ-TRJPB-QFQRF-QFT4D-H3GVB"],
                         ["Office Standard 2010", "V7QKV-4XVVR-XYV4D-F7DFM-8R6BM"],

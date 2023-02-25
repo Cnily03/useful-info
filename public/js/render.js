@@ -57,6 +57,7 @@
                 title: undefined,
                 header: undefined,
                 headerLayout: undefined,
+                lineWrap: false,
                 detail: content
             }]
         // start rendering content
@@ -73,6 +74,10 @@
             const ePiece = document.createElement("div")
             ePiece.classList.add("piece")
 
+            const ePContent = document.createElement("div")
+            ePContent.classList.add("p-content")
+            if(o.lineWrap) ePContent.classList.add("line-wrap")
+
             if (o.title) {
                 var ePTitle = document.createElement("div")
                 ePTitle.classList.add("p-title")
@@ -81,7 +86,7 @@
                 ePiece.appendChild(ePTitle)
                 // title click event
                 ePTitle.addEventListener("click", e => {
-                    openTarget(document.querySelector(".nav-container .nav.active").id.slice(2) + "/" + e.target.id.slice(2))
+                    openTarget($(".nav-container .nav.active").id.slice(2) + "/" + e.target.id.slice(2))
                     window.scrollTo({
                         behavior: "smooth",
                         top: e.target.offsetTop
@@ -93,7 +98,8 @@
             const ePDetail = document.createElement("div")
             ePDetail.classList.add("p-detail")
 
-            ePiece.appendChild(ePDetail)
+            ePContent.appendChild(ePDetail)
+            ePiece.appendChild(ePContent)
             eContent.appendChild(ePiece)
 
             // calculate css (grid-template-columns)
@@ -207,11 +213,11 @@
         }
 
         // set grid columns (nav)
-        function setNavGridColums() {
+        function setNavGridColumns() {
             if (maxNavWidth * STORAGE.FUNC.length <= eNavContainer.clientWidth) setCSSVariable("--nav-columns", STORAGE.FUNC.length)
             else setCSSVariable("--nav-columns", 1)
         }
-        window.addEventListener("resize", setNavGridColums), setNavGridColums()
+        window.addEventListener("resize", setNavGridColumns), setNavGridColumns()
     })
 
     // render content
@@ -220,6 +226,7 @@
             urlTargetedVisit = true
             $("#s_" + URI_ID[0]).click()
         } catch (e) {
+            urlTargetedVisit = false
             renderContent()
         }
     })

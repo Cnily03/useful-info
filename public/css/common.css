@@ -83,9 +83,15 @@ body {
     cursor: pointer;
 }
 
-.content .piece .p-detail {
+.content .piece .p-content {
     width: 100%;
     max-width: 100%;
+    margin: 0 auto;
+    overflow: auto;
+}
+
+.content .piece .p-detail {
+    width: 100%;
     margin: 0 auto;
     display: grid;
     justify-content: center;
@@ -95,8 +101,16 @@ body {
     border-left: #747d8c 1px solid;
 }
 
+.content .piece .p-content.line-wrap {
+    overflow: hidden;
+}
+
+.content .piece .p-content.line-wrap .p-detail {
+    max-width: 100%;
+}
+
 @media screen and (max-width: 425px) {
-    .content .piece .p-detail:has(.detail-title) {
+    .content .piece .p-content.line-wrap .p-detail:has(.detail-title) {
         grid-template-columns: 1fr !important;
         width: 100% !important;
         max-width: 100% !important;
